@@ -1,5 +1,3 @@
-#Code 3
-
 #!/bin/python3
 
 import math
@@ -8,29 +6,23 @@ import random
 import re
 import sys
 
-# Complete the solve function below.
-def solve(a, b):
-    a1 = b1 = 0
-    for i in range(len(a)):
-        if a[i] > b[i]:
-            a1 += 1
-        elif a[i] < b[i]:
-            b1 += 1
-        else:
-            pass
-    return a1,b1
-    
-
+# Complete the diagonalDifference function below.
+def diagonalDifference(a):
+    a1 = sum(a[i][i] for i in range(n))
+    b1 = sum(a[i][n-i-1] for i in range(n))
+    return abs(a1-b1)
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    a = list(map(int, input().rstrip().split()))
+    n = int(input())
 
-    b = list(map(int, input().rstrip().split()))
+    a = []
 
-    result = solve(a, b)
+    for _ in range(n):
+        a.append(list(map(int, input().rstrip().split())))
 
-    fptr.write(' '.join(map(str, result)))
-    fptr.write('\n')
+    result = diagonalDifference(a)
+
+    fptr.write(str(result) + '\n')
 
     fptr.close()
