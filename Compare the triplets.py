@@ -1,4 +1,3 @@
-#Code 2
 #!/bin/python3
 
 import math
